@@ -10,6 +10,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "phonenumber_field",
+    "accounts",
+    "common",
+    "items",
+    "requests",
 ]
 
 MIDDLEWARE = [
@@ -23,6 +28,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "config.urls"
+
+AUTH_USER_MODEL = "accounts.User"
 
 TEMPLATES = [
     {
@@ -65,3 +72,6 @@ USE_I18N = True
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
