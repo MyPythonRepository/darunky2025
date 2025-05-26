@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.9">
   <diagram name="Страница — 1" id="TE8ORYA5zkhygcP7eCWW">
-    <mxGraphModel dx="922" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1106" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -19,7 +19,7 @@
         <mxCell id="AzUC_-RSQBcQG5S_Dz8D-15" value="items" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="70" y="80" width="170" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-16" value="+ id&lt;div&gt;+ name&lt;/div&gt;&lt;div&gt;+ description&lt;/div&gt;&lt;div&gt;+ state_id (states.id)&lt;/div&gt;&lt;div&gt;+&amp;nbsp;category_id (categories.id)&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ user_id (users.id) - giver&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ date of creation&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="AzUC_-RSQBcQG5S_Dz8D-15" vertex="1">
+        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-16" value="+ id&lt;div&gt;+ name&lt;/div&gt;&lt;div&gt;+ description&lt;/div&gt;&lt;div&gt;+ state (new / used)&lt;/div&gt;&lt;div&gt;+&amp;nbsp;category_id (categories.id)&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ user_id (users.id) - giver&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ date of creation&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="AzUC_-RSQBcQG5S_Dz8D-15" vertex="1">
           <mxGeometry y="26" width="170" height="114" as="geometry" />
         </mxCell>
         <mxCell id="AzUC_-RSQBcQG5S_Dz8D-17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="AzUC_-RSQBcQG5S_Dz8D-15" vertex="1">
@@ -114,32 +114,6 @@
               <mxPoint x="334" y="-200" />
               <mxPoint x="410" y="90" />
               <mxPoint x="430" y="30" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-53" value="states" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="329" y="430" width="170" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-54" value="+ id&lt;div&gt;+ name&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(new / used)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="AzUC_-RSQBcQG5S_Dz8D-53" vertex="1">
-          <mxGeometry y="26" width="170" height="44" as="geometry" />
-        </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-55" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="AzUC_-RSQBcQG5S_Dz8D-53" vertex="1">
-          <mxGeometry y="70" width="170" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-56" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="AzUC_-RSQBcQG5S_Dz8D-53" vertex="1">
-          <mxGeometry y="78" width="170" height="22" as="geometry" />
-        </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-59" value="" style="edgeStyle=entityRelationEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;labelBackgroundColor=default;endArrow=ERoneToMany;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.737;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="AzUC_-RSQBcQG5S_Dz8D-54" target="AzUC_-RSQBcQG5S_Dz8D-16" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="379" y="496" as="sourcePoint" />
-            <mxPoint x="291" y="330" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="430" y="528" />
-              <mxPoint x="420" y="528" />
-              <mxPoint x="210" y="520" />
-              <mxPoint x="390" y="548" />
-              <mxPoint x="220" y="510" />
-              <mxPoint x="290" y="338" />
             </Array>
           </mxGeometry>
         </mxCell>
