@@ -6,7 +6,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-INSTALLED_APPS += ["django_extensions"]  # NOQA: F405python .\src\manage.py
+INSTALLED_APPS += ["django_extensions"]  # NOQA: F405
 
 DATABASES = {
     "default": {
