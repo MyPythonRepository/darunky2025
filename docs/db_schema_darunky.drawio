@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.9">
   <diagram name="Страница — 1" id="TE8ORYA5zkhygcP7eCWW">
-    <mxGraphModel dx="1106" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="922" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -81,7 +81,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-48" value="" style="edgeStyle=entityRelationEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;labelBackgroundColor=default;endArrow=ERoneToMany;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.008;entryY=0.582;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="AzUC_-RSQBcQG5S_Dz8D-20" target="AzUC_-RSQBcQG5S_Dz8D-16" edge="1">
+        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-48" value="" style="edgeStyle=entityRelationEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;labelBackgroundColor=default;endArrow=ERoneToMany;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.003;entryY=0.466;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="AzUC_-RSQBcQG5S_Dz8D-20" target="AzUC_-RSQBcQG5S_Dz8D-16" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="389" y="353" as="sourcePoint" />
             <mxPoint x="300" y="280" as="targetPoint" />
@@ -129,7 +129,7 @@
         <mxCell id="AzUC_-RSQBcQG5S_Dz8D-56" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="AzUC_-RSQBcQG5S_Dz8D-53" vertex="1">
           <mxGeometry y="78" width="170" height="22" as="geometry" />
         </mxCell>
-        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-59" value="" style="edgeStyle=entityRelationEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;labelBackgroundColor=default;endArrow=ERoneToMany;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.015;entryY=0.915;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="AzUC_-RSQBcQG5S_Dz8D-54" target="AzUC_-RSQBcQG5S_Dz8D-16" edge="1">
+        <mxCell id="AzUC_-RSQBcQG5S_Dz8D-59" value="" style="edgeStyle=entityRelationEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;labelBackgroundColor=default;endArrow=ERoneToMany;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.737;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="AzUC_-RSQBcQG5S_Dz8D-54" target="AzUC_-RSQBcQG5S_Dz8D-16" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="379" y="496" as="sourcePoint" />
             <mxPoint x="291" y="330" as="targetPoint" />
