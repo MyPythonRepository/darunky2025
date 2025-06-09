@@ -25,11 +25,11 @@ class IndexView(TemplateView):
 
 
 class UserLoginView(LoginView):
-    ...
+    pass
 
 
 class UserLogoutView(LogoutView):
-    ...
+    pass
 
 
 class UserRegistration(CreateView):
