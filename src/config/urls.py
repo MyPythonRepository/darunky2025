@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from accounts.views import IndexView
 
 urlpatterns = [
+    path("api/", include("api.urls")),
     path("admin/", admin.site.urls),
     path("", IndexView.as_view(), name="index"),
     path("accounts/", include("accounts.urls", namespace="accounts")),

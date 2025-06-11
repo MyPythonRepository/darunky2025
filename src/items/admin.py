@@ -1,3 +1,6 @@
-from django.contrib import admin  # NOQA: F401
+from django.contrib import admin
+from items.models import Item, Category, ItemPhoto
 
-# Register your models here.
+admin.site.register(Category)
+admin.site.register(Item)
+admin.site.register(ItemPhoto)
