@@ -11,6 +11,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "phonenumber_field",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "accounts",
     "common",
     "items",
@@ -75,3 +77,26 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
+
+LOGIN_URL = "login"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "pythonlms25@gmail.com"
+EMAIL_HOST_PASSWORD = "adwwwapdugtzfril"
+EMAIL_PORT = 587
+EMAIL_FAIL_SILENTLY = False
+
+REGISTRATION_EMAIL_SUBJECT = "Registration email from Darunky"
