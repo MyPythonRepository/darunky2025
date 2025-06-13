@@ -1,12 +1,7 @@
 from django.urls import path
-from .views import (
-    IndexView,
-    UserLoginView,
-    UserLogoutView,
-    UserRegistration,
-    UserActivationView,
-    send_test_email,
-)
+
+from .views import (IndexView, UserActivationView, UserLoginView,
+                    UserLogoutView, UserRegistration, send_test_email)
 
 app_name = "accounts"
 

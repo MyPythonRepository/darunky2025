@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                     "item",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        related_name="requests",
+                        related_name="item_requests",
                         to="items.item",
                         verbose_name="Item",
                     ),
