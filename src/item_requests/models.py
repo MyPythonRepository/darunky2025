@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+
 from common.models import BaseModel
 
 User = get_user_model()
@@ -9,7 +10,7 @@ class Request(BaseModel):
     item = models.ForeignKey(
         to="items.Item",
         on_delete=models.CASCADE,
-        related_name="requests",
+        related_name="item_requests",
         verbose_name="Item"
     )
     giver = models.ForeignKey(

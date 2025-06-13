@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
-from rest_framework.serializers import ModelSerializer, CharField
-from items.models import Item, ItemPhoto, Category
+from rest_framework.serializers import CharField, ModelSerializer
 
+from items.models import Category, Item, ItemPhoto
 
 User = get_user_model()
 

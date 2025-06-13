@@ -1,15 +1,15 @@
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView, LogoutView
 from django.core.mail import send_mail
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
-from django.views.generic import TemplateView, RedirectView
-from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic import CreateView
+from django.views.generic import CreateView, RedirectView, TemplateView
 
 from config import settings
+
 from .forms import UserRegistrationForm
 from .services.emails import send_registration_email
 from .utils.token_generator import TokenGenerator

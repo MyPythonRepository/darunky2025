@@ -1,10 +1,10 @@
-from rest_framework.generics import (
-    CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
-)
+from rest_framework.generics import (CreateAPIView, DestroyAPIView,
+                                     ListAPIView, RetrieveAPIView,
+                                     UpdateAPIView)
 from rest_framework.permissions import IsAuthenticated
 
-from items.models import Item
 from api.serializers import ItemSerializer
+from items.models import Item
 
 
 class ItemCreateView(CreateAPIView):
