@@ -5,8 +5,11 @@ RUN apt update & mkdir /darunky
 WORKDIR /darunky
 
 COPY ./src ./src
+COPY ./commands ./commands
 COPY ./requirements.txt ./requirements.txt
 
 RUN python -m pip install --upgrade pip & pip install -r requirements.txt
 
-CMD ["python", "src/manage.py", "runserver"]
+CMD ["bash"]
+
+#CMD ["python", "src/manage.py", "runserver", "0:8010"]
