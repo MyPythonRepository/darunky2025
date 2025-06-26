@@ -84,7 +84,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 INTERNAL_IPS = [
-    '127.0.0.1',
+    "127.0.0.1",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

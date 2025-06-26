@@ -8,22 +8,11 @@ User = get_user_model()
 
 class Request(BaseModel):
     item = models.ForeignKey(
-        to="items.Item",
-        on_delete=models.CASCADE,
-        related_name="item_requests",
-        verbose_name="Item"
+        to="items.Item", on_delete=models.CASCADE, related_name="item_requests", verbose_name="Item"
     )
-    giver = models.ForeignKey(
-        to=User,
-        on_delete=models.CASCADE,
-        related_name="given_requests",
-        verbose_name="Giver"
-    )
+    giver = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="given_requests", verbose_name="Giver")
     requester = models.ForeignKey(
-        to=User,
-        on_delete=models.CASCADE,
-        related_name="made_requests",
-        verbose_name="Requester"
+        to=User, on_delete=models.CASCADE, related_name="made_requests", verbose_name="Requester"
     )
 
     name = models.CharField(max_length=255, verbose_name="Name")

@@ -32,9 +32,14 @@ class ItemSerializer(ModelSerializer):
     class Meta:
         model = Item
         fields = [
-            "id", "name", "description", "state",
-            "category", "category_data",
-            "user", "photos",
+            "id",
+            "name",
+            "description",
+            "state",
+            "category",
+            "category_data",
+            "user",
+            "photos",
         ]
         read_only_fields = ["user"]
 

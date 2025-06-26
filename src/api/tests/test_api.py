@@ -16,8 +16,7 @@ class ItemApiTests(TestCase):
         self.user = User.objects.create_user(email="test@test.com", password="Pass*123")
         self.category = Category.objects.create(name="Books")
         self.item = Item.objects.create(
-            name="Test Item", description="desc", state=1,
-            category=self.category, user=self.user
+            name="Test Item", description="desc", state=1, category=self.category, user=self.user
         )
         self.urls = {
             "list": reverse("item-list"),
@@ -40,23 +39,29 @@ class ItemApiTests(TestCase):
 
     def test_create_item(self):
         self.client.force_authenticate(self.user)
-        res = self.client.post(self.urls["create"], {
-            "name": "New Item",
-            "description": "desc",
-            "state": 1,
-            "category": self.category.name,
-        })
+        res = self.client.post(
+            self.urls["create"],
+            {
+                "name": "New Item",
+                "description": "desc",
+                "state": 1,
+                "category": self.category.name,
+            },
+        )
         self.assertEqual(res.status_code, HTTP_201_CREATED)
         self.assertTrue(Item.objects.filter(name="New Item", user=self.user).exists())
 
     def test_update_item_by_owner(self):
         self.client.force_authenticate(self.user)
-        res = self.client.put(self.urls["update"], {
-            "name": "Updated",
-            "description": "Updated desc",
-            "state": 2,
-            "category": self.category.name,
-        })
+        res = self.client.put(
+            self.urls["update"],
+            {
+                "name": "Updated",
+                "description": "Updated desc",
+                "state": 2,
+                "category": self.category.name,
+            },
+        )
         self.assertEqual(res.status_code, HTTP_200_OK)
         self.item.refresh_from_db()
         self.assertEqual(self.item.name, "Updated")
