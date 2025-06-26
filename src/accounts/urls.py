@@ -1,4 +1,5 @@
 from django.urls import path
+from accounts.views import UserProfileDetailView, UserProfileUpdateView
 
 from .views import (IndexView, UserActivationView, UserLoginView,
                     UserLogoutView, UserRegistration, send_test_email)
@@ -12,4 +13,6 @@ urlpatterns = [
     path("register/", UserRegistration.as_view(), name="register"),
     path("activate/<uid>/<token>/", UserActivationView.as_view(), name="activate"),
     path("send-test-email/", send_test_email, name="send_test_email"),
+    path("profile/", UserProfileDetailView.as_view(), name="profile"),
+    path("profile/edit/", UserProfileUpdateView.as_view(), name="edit_profile"),
 ]

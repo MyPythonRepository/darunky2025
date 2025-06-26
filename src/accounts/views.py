@@ -6,13 +6,15 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
-from django.views.generic import CreateView, RedirectView, TemplateView
+from django.views.generic import CreateView, RedirectView, TemplateView, DetailView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from config import settings
 
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserProfileForm
 from .services.emails import send_registration_email
 from .utils.token_generator import TokenGenerator
+from .models import UserProfile
 
 
 class IndexView(TemplateView):
@@ -77,3 +79,28 @@ def send_test_email(request: HttpRequest) -> HttpResponse:
         recipient_list=[settings.EMAIL_HOST_USER],
     )
     return HttpResponse("Done")
+
+
+class UserProfileDetailView(LoginRequiredMixin, DetailView):
+    model = UserProfile
+    template_name = "profile/profile_detail.html"
+
+    def get_object(self):
+        profile, _ = UserProfile.objects.get_or_create(user=self.request.user)
+        return profile
+
+
+class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = UserProfile
+    form_class = UserProfileForm
+    template_name = "profile/profile_edit.html"
+    success_url = reverse_lazy('accounts:profile')
+
+    def get_object(self):
+        profile, _ = UserProfile.objects.get_or_create(user=self.request.user)
+        return profile
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs

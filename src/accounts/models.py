@@ -1,8 +1,9 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
-from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.db import models
+from django.contrib.auth import get_user_model
 from phonenumber_field.modelfields import PhoneNumberField
 
 from accounts.managers import UserManager
@@ -53,3 +54,24 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_registration_duration(self):
         return f"{timezone.now() - self.date_joined}"
+
+
+class UserProfile(models.Model):
+    USER_TYPE_CHOICES = [
+        ("giver", "Giver"),
+        ("receiver", "Receiver"),
+    ]
+
+    user = models.OneToOneField(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name="profile"
+    )
+
+    name = models.CharField(max_length=150, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    avatar = models.ImageField(upload_to="avatars/users/", null=True, blank=True)
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.name} - {self.user_type}"

@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container my-4" style="max-width: 600px;">
+    <h2 class="mb-4 text-center">User profile</h2>
+
+    <div class="text-center mb-3">
+        {% if object.user.avatar %}
+            <img src="{{ object.user.avatar.url }}" alt="Avatar" class="rounded" width="150">
+        {% else %}
+            <p class="text-muted">No avatar</p>
+        {% endif %}
+    </div>
+
+    <ul class="list-group mb-3">
+        <li class="list-group-item">
+            <strong>Name:</strong> {{ object.user.name|default:"" }}
+        </li>
+        <li class="list-group-item">
+            <strong>Email:</strong> {{ object.user.email|default:"" }}
+        </li>
+    </ul>
+
+    <div class="text-center">
+        <a href="{% url 'accounts:edit_profile' %}" class="btn btn-outline-primary">Edit profile</a>
+    </div>
+</div>
+{% endblock content %}
