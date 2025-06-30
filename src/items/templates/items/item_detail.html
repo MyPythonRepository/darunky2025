@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container my-4" style="max-width: 600px;">
+    <h2 class="mb-4 text-center">{{ item.name }}</h2>
+
+    <div class="mb-3 text-center">
+        {% if item.photos.exists %}
+            {% for photo in item.photos.all %}
+                <img src="{{ photo.image_url.url }}" alt="Photo of {{ item.name }}" class="img-fluid rounded mb-2" style="max-height: 300px; object-fit: contain;">
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">No photos available</p>
+        {% endif %}
+    </div>
+
+    <ul class="list-group mb-3">
+        <li class="list-group-item"><strong>Description:</strong> {{ item.description|default:"(No description)" }}</li>
+        <li class="list-group-item"><strong>Category:</strong> {{ item.category.name }}</li>
+        <li class="list-group-item"><strong>State:</strong> {{ item.get_state_display }}</li>
+        <li class="list-group-item"><strong>Published:</strong> {{ item.created_at|date:"d.m.Y H:i" }}</li>
+        <li class="list-group-item"><strong>Giver:</strong> {{ item.user.name|default:item.user.email }}</li>
+    </ul>
+
+    <div class="text-center">
+        <a href="{% url 'items:item_list' %}" class="btn btn-outline-secondary">← Back to catalog</a>
+    </div>
+</div>
+{% endblock %}

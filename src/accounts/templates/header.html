@@ -39,6 +39,7 @@
                                 </a>
                                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
                                     <li><a class="dropdown-item" href="#">Hello {{  user.email|lower }}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">User profile</a></li>
                                     <li><a class="dropdown-item" href="#">Change password</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <form method="post" action="{% url 'accounts:logout' %}">

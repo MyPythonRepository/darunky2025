@@ -33,6 +33,7 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
+    path('items/', include("items.urls", namespace="items")),
 ]
 
 if settings.DEBUG:
