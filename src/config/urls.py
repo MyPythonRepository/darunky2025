@@ -27,13 +27,14 @@ urlpatterns = [
     path("api/", include("api.urls")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("admin/", admin.site.urls),
+    path('generate/', include('common.urls')),
     path("", IndexView.as_view(), name="index"),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("login/", auth_views.LoginView.as_view(), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
-    path('items/', include("items.urls", namespace="items")),
+    path("items", include("items.urls", namespace="items")),
 ]
 
 if settings.DEBUG:
