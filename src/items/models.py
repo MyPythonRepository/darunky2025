@@ -1,8 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
 from common.models import BaseModel
+from faker import Faker
+import random
 
+fake = Faker()
 User = get_user_model()
 
 
@@ -42,3 +44,25 @@ class ItemPhoto(BaseModel):
 
     def __str__(self):
         return f"Photo for {self.item.name} (ID: {self.item.id})"
+
+
+def generate_categories(n=5):
+    categories = []
+    for _ in range(n):
+        cat = Category.objects.create(name=fake.unique.word())
+        categories.append(cat)
+    return categories
+
+
+def generate_items(users, categories, n=10):
+    items = []
+    for _ in range(n):
+        item = Item.objects.create(
+            name=fake.word(),
+            description=fake.text(),
+            state=random.choice([ItemState.NEW, ItemState.USED]),
+            user=random.choice(users),
+            category=random.choice(categories),
+        )
+        items.append(item)
+    return items

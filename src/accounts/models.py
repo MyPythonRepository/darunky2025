@@ -5,8 +5,12 @@ from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.contrib.auth import get_user_model
 from phonenumber_field.modelfields import PhoneNumberField
+from faker import Faker
 
 from accounts.managers import UserManager
+
+
+fake = Faker()
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -75,3 +79,16 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.name} - {self.user_type}"
+
+
+def generate_users(n=5):
+    users = []
+    User = get_user_model()
+    for _ in range(n):  # NOQA: F402
+        user = User.objects.create_user(
+            email=fake.unique.email(),
+            password="password12345678",
+            name=fake.name(),
+        )
+        users.append(user)
+    return users

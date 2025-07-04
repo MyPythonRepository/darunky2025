@@ -1,11 +1,7 @@
 from celery import shared_task
 
-from items.models import Category, User
-from utils.data_generator import (
-    generate_users,
-    generate_categories,
-    generate_items,
-)
+from items.models import Category, User, generate_categories, generate_items
+from accounts.models import generate_users
 
 
 @shared_task
