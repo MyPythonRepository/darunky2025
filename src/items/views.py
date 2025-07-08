@@ -1,9 +1,13 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from functools import reduce
 import operator
 
-from .models import Item, ItemState, Category
+from .models import Item, ItemState, Category, ItemPhoto
+from .forms import ItemForm
 
 
 class ItemListView(ListView):
@@ -49,3 +53,64 @@ class ItemDetailView(DetailView):
     model = Item
     template_name = "items/item_detail.html"
     context_object_name = "item"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        item = self.get_object()
+        context["is_owner"] = self.request.user == item.user
+        return context
+
+
+class ItemCreateView(LoginRequiredMixin, CreateView):
+    form_class = ItemForm
+    template_name = "items/item_form.html"
+    success_url = reverse_lazy("items:item_list")
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+
+        category_name = form.cleaned_data["category_name"].strip()
+        category, _ = Category.objects.get_or_create(name__iexact=category_name, defaults={"name": category_name})
+        form.instance.category = category
+
+        self.object = form.save()
+
+        photo_file = form.cleaned_data.get("photo")
+        if photo_file:
+            ItemPhoto.objects.create(item=self.object, image_url=photo_file)
+
+        return redirect(self.success_url)
+
+
+class ItemUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Item
+    form_class = ItemForm
+    template_name = "items/item_form.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+
+        category_name = form.cleaned_data["category_name"].strip()
+        category, _ = Category.objects.get_or_create(name__iexact=category_name, defaults={"name": category_name})
+        form.instance.category = category
+
+        self.object = form.save()
+
+        photo_file = form.cleaned_data.get("photo")
+        if photo_file:
+            self.object.photos.all().delete()
+            ItemPhoto.objects.create(item=self.object, image_url=photo_file)
+
+        return redirect("items:item_detail", pk=self.object.pk)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
+class ItemDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Item
+    template_name = "items/item_confirm_delete.html"
+    success_url = reverse_lazy("items:item_list")
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
