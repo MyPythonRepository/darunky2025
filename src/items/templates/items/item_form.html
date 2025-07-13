@@ -1,0 +1,77 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-4" style="max-width: 700px;">
+    <h2 class="mb-4 text-center">
+        {% if form.instance.pk %}
+            Edit item
+        {% else %}
+            Add a new item
+        {% endif %}
+    </h2>
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        <div class="mb-3">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {% if form.name.errors %}
+                <div class="text-danger small">{{ form.name.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.category_name.label_tag }}
+            {{ form.category_name }}
+            {% if form.category_name.help_text %}
+                <small class="form-text text-muted">{{ form.category_name.help_text }}</small>
+            {% endif %}
+            {% if form.category_name.errors %}
+                <div class="text-danger small">{{ form.category_name.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.state.label_tag }}
+            {{ form.state }}
+            {% if form.state.errors %}
+                <div class="text-danger small">{{ form.state.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {% if form.description.errors %}
+                <div class="text-danger small">{{ form.description.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.photo.label_tag }}
+            {{ form.photo }}
+            {% if form.photo.errors %}
+                <div class="text-danger small">{{ form.photo.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="text-center mb-3">
+            <button type="submit" class="btn btn-primary me-2">
+                {% if form.instance.pk %}Save changes{% else %}Publish{% endif %}
+            </button>
+
+            {% if form.instance.pk %}
+            <a href="{% url 'items:item_detail' form.instance.pk %}" class="btn btn-outline-secondary">
+                ← Back to item
+            </a>
+            {% else %}
+            <a href="{% url 'items:item_list' %}" class="btn btn-outline-secondary">
+                ← Back to catalog
+            </a>
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock %}

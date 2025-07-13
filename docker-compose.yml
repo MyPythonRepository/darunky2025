@@ -78,52 +78,52 @@ services:
     depends_on:
       - backend
 
-  redis:
-    image: redis
-    env_file:
-      - .env
-    restart: on-failure
-    depends_on:
-      - backend
+#  redis:
+#    image: redis
+#    env_file:
+#      - .env
+#    restart: on-failure
+#    depends_on:
+#      - backend
 
-  redisadmin:
-    image: rediscommander/redis-commander:latest
-    container_name: redisadmin_container
-    restart: always
-    environment:
-      - REDIS_HOSTS=local:redis:6379
-    ports:
-      - "8081:8081"
-    depends_on:
-      - redis
-
-  celery:
-    build: ./
-    container_name: celery-container
-    command:
-      - ./commands/start_celery.sh
-    restart: on-failure
-    volumes:
-      - ./src:/darunky
-      - ./commands:/darunky/commands
-    env_file:
-      - .env
-    depends_on:
-      - backend
-      - redis
-
-  flower:
-    build: ./
-    container_name: flower-container
-    volumes:
-      - ./src:/darunky
-    env_file:
-      - .env
-    command: celery -A config flower --broker=redis://redis
-    ports:
-      - 5556:5555
-    depends_on:
-      - celery
+#  redisadmin:
+#    image: rediscommander/redis-commander:latest
+#    container_name: redisadmin_container
+#    restart: always
+#    environment:
+#      - REDIS_HOSTS=local:redis:6379
+#    ports:
+#      - "8081:8081"
+#    depends_on:
+#      - redis
+#
+#  celery:
+#    build: ./
+#    container_name: celery-container
+#    command:
+#      - ./commands/start_celery.sh
+#    restart: on-failure
+#    volumes:
+#      - ./src:/darunky
+#      - ./commands:/darunky/commands
+#    env_file:
+#      - .env
+#    depends_on:
+#      - backend
+#      - redis
+#
+#  flower:
+#    build: ./
+#    container_name: flower-container
+#    volumes:
+#      - ./src:/darunky
+#    env_file:
+#      - .env
+#    command: celery -A config flower --broker=redis://redis
+#    ports:
+#      - 5556:5555
+#    depends_on:
+#      - celery
 
 
 volumes:

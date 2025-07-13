@@ -2,7 +2,13 @@
 
 {% block content %}
 <div class="container my-4" style="max-width: 700px;">
-    <h2 class="mb-4 text-center">Catalog of Items</h2>
+    <h2 class="mb-4 text-center">Catalog of items</h2>
+
+    {% if user.is_authenticated %}
+        <div class="text-end mb-3">
+            <a href="{% url 'items:item_add' %}" class="btn btn-success">Add an item</a>
+        </div>
+    {% endif %}
 
     <form method="get" class="d-flex gap-2 mb-4 justify-content-center flex-wrap">
         <input type="text" name="q" class="form-control" placeholder="Search..." value="{{ request.GET.q }}" style="max-width: 250px;">
