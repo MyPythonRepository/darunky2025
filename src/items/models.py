@@ -26,6 +26,7 @@ class Category(BaseModel):
 
 class Item(BaseModel):
     name = models.CharField(max_length=255)
+
     description = models.TextField(blank=True)
 
     state = models.PositiveSmallIntegerField(choices=ItemState.choices, default=ItemState.NEW)
@@ -33,6 +34,8 @@ class Item(BaseModel):
     category = models.ForeignKey(to=Category, on_delete=models.PROTECT, related_name="items")
 
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="given_items")
+
+    is_requested = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name} (ID: {self.id})"

@@ -23,10 +23,20 @@
     </ul>
 
     {% if is_owner %}
-    <div class="text-center mb-3">
-        <a href="{% url 'items:item_edit' item.pk %}" class="btn btn-warning me-2">Edit</a>
-        <a href="{% url 'items:item_delete' item.pk %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-    </div>
+        <div class="text-center mb-3">
+            <a href="{% url 'items:item_edit' item.pk %}" class="btn btn-warning me-2">Edit</a>
+            <a href="{% url 'items:item_delete' item.pk %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+        </div>
+    {% else %}
+        {% if has_requested %}
+            <div class="alert alert-info text-center">
+                You have already sent a request for this item.
+            </div>
+        {% else %}
+            <div class="text-center mb-3">
+                <a href="{% url 'item_requests:create' item.pk %}" class="btn btn-primary">Gift me</a>
+            </div>
+        {% endif %}
     {% endif %}
 
     <div class="text-center">
