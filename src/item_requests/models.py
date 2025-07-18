@@ -19,6 +19,11 @@ class Request(BaseModel):
     phone = models.CharField(max_length=50, verbose_name="Phone")
     delivery_address = models.TextField(verbose_name="Delivery address")
 
+    class Meta:
+        unique_together = ("item", "requester")
+        verbose_name = "Item_Request"
+        verbose_name_plural = "Item_Requests"
+
     def get_short_name(self):
         return self.name
 

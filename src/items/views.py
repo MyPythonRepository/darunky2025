@@ -8,6 +8,7 @@ import operator
 
 from .models import Item, ItemState, Category, ItemPhoto
 from .forms import ItemForm
+from item_requests.models import Request
 
 
 class ItemListView(ListView):
@@ -17,7 +18,7 @@ class ItemListView(ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        queryset = Item.objects.select_related("category", "user").prefetch_related("photos").order_by("-created_at")
+        queryset = Item.objects.select_related("category", "user").prefetch_related("photos")
 
         query = self.request.GET.get("q")
         if query:
@@ -40,7 +41,16 @@ class ItemListView(ListView):
         if state:
             queryset = queryset.filter(state=state)
 
-        return queryset
+        user = self.request.user
+        if user.is_authenticated:
+            requested_items_ids = Request.objects.filter(requester=user).values_list("item_id", flat=True)
+            queryset = queryset.filter(
+                Q(user=user) | Q(is_requested=False) | Q(id__in=requested_items_ids)
+            )
+        else:
+            queryset = queryset.filter(is_requested=False)
+
+        return queryset.order_by("-created_at")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -57,7 +67,13 @@ class ItemDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         item = self.get_object()
-        context["is_owner"] = self.request.user == item.user
+        user = self.request.user
+
+        context["is_owner"] = user == item.user
+        context["has_requested"] = (
+            item.item_requests.filter(requester=user).exists()
+            if user.is_authenticated else False
+        )
         return context
 
 

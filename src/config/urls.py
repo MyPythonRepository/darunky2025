@@ -35,6 +35,7 @@ urlpatterns = [
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
     path("items/", include("items.urls", namespace="items")),
+    path("item_requests/", include("item_requests.urls", namespace="item_requests")),
 ]
 
 if settings.DEBUG:
